@@ -1,0 +1,29 @@
+<h1>Category</h1>
+<a href="javascript:void(0)" [routerLink]="['add']">Add New</a>
+<table class="table table-striped">
+   <thead>
+    <th>#</th>
+    <th> Category Title</th>
+    <th>Sub Category </th>
+    <th>Action</th>
+</thead>
+<tbody>
+    <tr *ngFor="let cat of category; let i=index;">
+        <td>
+            {{i+1}}
+        </td>
+        <td>
+            {{cat.categoryName}}
+        </td>
+        <td>
+            {{cat.subCategory}}
+        </td>
+        <td>
+           <a href="javascript:void(0)" [routerLink]="['edit',cat._id]" >Edit</a> / 
+           <a href="javascript:void(0)" (click)="deleteCategory(cat._id)" >Delete</a>
+        </td>
+    </tr>
+</tbody>
+</table>
+
+<app-pagination [currentPage]="pageNumber" [pageSize]="pageSize" [totalCount]="totalCount" (pageChange)="onPageChange($event)" ></app-pagination>

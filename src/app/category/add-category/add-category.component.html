@@ -1,0 +1,23 @@
+<h1>{{categoryId?'Update':'Add'}} Category</h1>
+<div  class="alert alert-success" role="alert" *ngIf="successMessage" >{{successMessage}}</div >
+<form [formGroup]="categoryForm" (ngSubmit)="saveForm()">
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Category</label>
+  <input type="email" class="form-control" formControlName="categoryName" placeholder="Category" />
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Sub Category</label>
+  <input type="email" class="form-control" formControlName="subCategory" placeholder="Sub Category" />
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label"
+    >Description</label
+  >
+  <textarea class="form-control" formControlName="description" placeholder="Description" rows="3"></textarea>
+</div>
+
+<div class="mb-3">
+  <input type="submit" class="btn btn-primary" value="{{categoryId?'Update':'Add'}}" [disabled]="loading" />
+</div>
+
+</form>

@@ -1,0 +1,39 @@
+<h1>Product</h1>
+<a href="javascript:void(0)" [routerLink]="['add']">Add New</a>
+
+<div  class="alert alert-danger" role="alert" *ngIf="errorMessage" >{{errorMessage}}</div >
+<table class="table table-striped" *ngIf="!errorMessage">
+   <thead>
+    <th>#</th>
+    <th>Product Id</th>
+    <th>Product Name</th>
+    <th>Product Number</th>
+    <th>Category </th>
+    <th>Action</th>
+</thead>
+<tbody>
+     <tr *ngFor="let prod of products; let i=index;">
+        <td>
+            {{(i+1) + (10*(pageNumber-1))}}
+        </td>
+        <td>
+            {{prod._id}}
+        </td>
+       
+        <td>
+            {{prod.productName}}
+        </td>
+        <td>
+            {{prod.productNumber}}
+        </td>
+        <td>
+            {{prod.categoryId.categoryName}}
+        </td>
+        <td>
+           <a href="javascript:void(0)" [routerLink]="['edit',prod._id]" >Edit</a> / 
+           <a href="javascript:void(0)" (click)="deleteProduct(prod._id)" >Delete</a>
+        </td>
+    </tr> 
+</tbody>
+</table>
+<app-pagination [currentPage]="pageNumber" [pageSize]="pageSize" [totalCount]="totalCount" (pageChange)="onPageChange($event)" ></app-pagination>
